@@ -1,31 +1,26 @@
 import { css } from "@emotion/react";
 
-export const theme = {
-  colors: {
-    white: 0xffffff,
-    black: 0x000112,
-    purple: {
-      primary: 0x635fc7,
-      secondary: 0xa8a4ff,
-    },
-    red: {
-      primary: 0xea5555,
-      secondary: 0xff9898,
-    },
-    dark: {
-      primary: 0x20212c,
-      secondary: 0x2b2c37,
-      tertiary: 0x3e3f4e,
-    },
-    light: {
-      primary: 0x828fa3,
-      secondary: 0xe4ebfa,
-      tertiary: 0xf4f7fd,
-    },
-  },
-};
-
 export const globalStyles = css`
+  :root {
+    --white: 0xffffff;
+    --black: 0x000112;
+    --purplePrimary: 0x635fc7;
+    --purpleSecondary: 0xa8a4ff;
+    --redPrimary: 0xea5555;
+    --redSecondary: 0xff9898;
+    --text: 0x000112;
+    --line: 0xe4ebfa;
+    --primaryBg: 0xffffff;
+    --secondaryBg: 0xf4f7fd;
+  }
+
+  [data-theme="dark"] {
+    --text: 0xffffff;
+    --line: 0x3e3f4e;
+    --primaryBg: 0x2b2c37;
+    --secondaryBg: 0x20212c;
+  }
+
   *,
   *::before,
   *::after {
