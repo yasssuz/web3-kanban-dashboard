@@ -1,3 +1,5 @@
+import { css } from "@emotion/react";
+
 export const theme = {
   colors: {
     white: 0xffffff,
@@ -22,3 +24,17 @@ export const theme = {
     },
   },
 };
+
+export const globalStyles = css`
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+  }
+`;
