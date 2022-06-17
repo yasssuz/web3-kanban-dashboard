@@ -4,6 +4,7 @@ export const globalStyles = css`
   :root {
     --white: #ffffff;
     --black: #000112;
+    --gray: #828fa3;
     --purplePrimary: #635fc7;
     --purpleSecondary: #a8a4ff;
     --redPrimary: #ea5555;
