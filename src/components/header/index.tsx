@@ -36,7 +36,7 @@ function Header() {
           type='button'
           disabled
         >
-          <img src='/public/icons/icon-add-task-mobile.svg' alt='add' />
+          <img src='/icons/icon-add-task-mobile.svg' alt='add' />
         </Button>
         <SettingsButton>
           <img src='/icons/icon-vertical-ellipsis.svg' alt='settings' />
