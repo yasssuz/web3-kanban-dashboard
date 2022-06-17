@@ -7,12 +7,12 @@ export const HeadingContainer = styled.h1<HeadingProps>`
   font-size: ${props =>
     (props.size === "extraLarge" && "24px") ||
     (props.size === "large" && "18px") ||
-    (props.size === "large" && "15px") ||
+    (props.size === "medium" && "15px") ||
     "12px"};
   line-height:  ${props =>
     (props.size === "extraLarge" && "30px") ||
     (props.size === "large" && "23px") ||
-    (props.size === "large" && "19px") ||
+    (props.size === "medium" && "19px") ||
     "15px"}
   color: ${props => (props.size === "small" ? "var(--gray)" : "var(--text)")};
   font-weight: bold;
