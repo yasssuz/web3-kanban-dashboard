@@ -1,5 +1,10 @@
 import { css } from "@emotion/react";
 
+export const MediaQuery = {
+  sm: "@media (max-width: 768px)",
+  md: "@media (max-width: 1024px)",
+};
+
 export const globalStyles = css`
   :root {
     --white: #ffffff;
