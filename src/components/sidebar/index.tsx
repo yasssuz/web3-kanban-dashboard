@@ -1,4 +1,4 @@
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Heading from "../shared/typography/heading";
 import Text from "../shared/typography/text";
 import {
@@ -15,8 +15,7 @@ interface SidebarProps {
 }
 
 function Sidebar({ isSidebarOpen, setIsSidebarOpen }: SidebarProps) {
-  const { pathname } = useLocation();
-  const currentPath = pathname.replace("/dashboard/", "");
+  const { dashboardName } = useParams();
   const fakeBoards = [
     {
       title: "Platform Launch",
@@ -51,7 +50,7 @@ function Sidebar({ isSidebarOpen, setIsSidebarOpen }: SidebarProps) {
             <BoardsList>
               {fakeBoards.map(({ title, path }, index) => (
                 <Board
-                  className={currentPath === path ? "selected" : ""}
+                  className={dashboardName === path ? "selected" : ""}
                   key={index}
                 >
                   <Link to={`/dashboard/${path}`}>

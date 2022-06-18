@@ -8,14 +8,15 @@ function App() {
   return (
     <>
       <Global styles={globalStyles} />
-      <BaseLayout>
-        <Routes>
-          {/* <Route path="/login" element={<Login />} /> */}
-          <Route path='/dashboard' element={<Dashboard />} />
+
+      <Routes>
+        {/* <Route path="/login" element={<Login />} /> */}
+        <Route path='/dashboard' element={<BaseLayout />}>
+          <Route index element={<h1>dashboard index</h1>} />
           <Route path='/dashboard/:dashboardName' element={<Dashboard />} />
-          <Route path='*' element={<h1>nothing here</h1>} />
-        </Routes>
-      </BaseLayout>
+        </Route>
+        <Route path='*' element={<h1>nothing here</h1>} />
+      </Routes>
     </>
   );
 }
