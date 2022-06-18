@@ -16,15 +16,15 @@ export const globalStyles = css`
     --redSecondary: #ff9898;
     --text: #000112;
     --line: #e4ebfa;
-    --primaryBg: #ffffff;
-    --secondaryBg: #f4f7fd;
+    --primaryBg: #f4f7fd;
+    --secondaryBg: #ffffff;
   }
 
   [data-theme="dark"] {
     --text: #ffffff;
     --line: #3e3f4e;
-    --primaryBg: #2b2c37;
-    --secondaryBg: #20212c;
+    --primaryBg: #20212c;
+    --secondaryBg: #2b2c37;
   }
 
   *,
@@ -37,5 +37,6 @@ export const globalStyles = css`
 
   body {
     font-family: "Plus Jakarta Sans", sans-serif;
+    background: var(--primaryBg);
   }
 `;
