@@ -9,14 +9,14 @@ export const HeadingContainer = styled.h1<HeadingProps>`
     (props.size === "large" && "18px") ||
     (props.size === "medium" && "15px") ||
     "12px"};
-  line-height:  ${props =>
+  line-height: ${props =>
     (props.size === "extraLarge" && "30px") ||
     (props.size === "large" && "23px") ||
     (props.size === "medium" && "19px") ||
-    "15px"}
+    "15px"};
   color: ${props => (props.size === "small" ? "var(--gray)" : "var(--text)")};
   font-weight: bold;
-  letter-spacing: ${props => (props.size === "small" ? "2.4px" : "")}
+  letter-spacing: ${props => (props.size === "small" ? "2.4px" : "")};
 
   ${props =>
     props.size === "extraLarge" &&
@@ -30,5 +30,5 @@ export const HeadingContainer = styled.h1<HeadingProps>`
         font-size: 18px;
         line-height: 23px;
       }
-    `}
+    `};
 `;
