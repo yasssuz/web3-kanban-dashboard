@@ -13,7 +13,7 @@ function App() {
         {/* <Route path="/login" element={<Login />} /> */}
         <Route path='/dashboard' element={<BaseLayout />}>
           <Route index element={<h1>dashboard index</h1>} />
-          <Route path='/dashboard/:dashboardName' element={<Dashboard />} />
+          <Route path='/dashboard/:dashboardPath' element={<Dashboard />} />
         </Route>
         <Route path='*' element={<h1>nothing here</h1>} />
       </Routes>
