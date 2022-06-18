@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Heading from "../shared/typography/heading";
 import Text from "../shared/typography/text";
 import {
@@ -12,25 +12,16 @@ import {
 interface SidebarProps {
   isSidebarOpen: boolean;
   setIsSidebarOpen(state: (prevState: boolean) => boolean): void;
+  boards: { title: string; path: string }[];
+  dashboardPath: string | undefined;
 }
 
-function Sidebar({ isSidebarOpen, setIsSidebarOpen }: SidebarProps) {
-  const { dashboardName } = useParams();
-  const fakeBoards = [
-    {
-      title: "Platform Launch",
-      path: "platform-launch",
-    },
-    {
-      title: "Marketing Plan",
-      path: "marketing-plan",
-    },
-    {
-      title: "Roadmap",
-      path: "roadmap",
-    },
-  ];
-
+function Sidebar({
+  isSidebarOpen,
+  setIsSidebarOpen,
+  boards,
+  dashboardPath,
+}: SidebarProps) {
   return (
     <>
       {!isSidebarOpen && (
@@ -45,12 +36,12 @@ function Sidebar({ isSidebarOpen, setIsSidebarOpen }: SidebarProps) {
         <SidebarContainer>
           <TopArea>
             <Heading as='strong' size='small'>
-              ALL BOARDS ({fakeBoards.length})
+              ALL BOARDS ({boards.length})
             </Heading>
             <BoardsList>
-              {fakeBoards.map(({ title, path }, index) => (
+              {boards.map(({ title, path }, index) => (
                 <Board
-                  className={dashboardName === path ? "selected" : ""}
+                  className={dashboardPath === path ? "selected" : ""}
                   key={index}
                 >
                   <Link to={`/dashboard/${path}`}>

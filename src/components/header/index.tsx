@@ -9,7 +9,13 @@ import {
   SettingsButton,
 } from "./styles";
 
-function Header() {
+interface HeaderProps {
+  isSidebarOpen: boolean;
+  boards: { title: string; path: string }[];
+  dashboardPath: string | undefined;
+}
+
+function Header({ isSidebarOpen, boards, dashboardPath }: HeaderProps) {
   return (
     <HeaderContainer>
       <LogoArea>
@@ -18,7 +24,7 @@ function Header() {
       </LogoArea>
       <InteractionArea>
         <Heading as='h1' size='extraLarge'>
-          Platform Launch
+          {boards.find(board => board.path === dashboardPath)?.title}
         </Heading>
         <Button
           variant='primary'
