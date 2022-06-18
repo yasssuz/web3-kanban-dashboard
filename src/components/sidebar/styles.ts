@@ -47,6 +47,7 @@ export const BoardsList = styled.ul`
 
 export const Board = styled.li`
   a {
+    position: relative;
     text-decoration: none;
     border-radius: 0px 100px 100px 0px;
     display: flex;
@@ -58,13 +59,27 @@ export const Board = styled.li`
     &:hover {
       background: rgba(99, 95, 199, 0.1);
     }
+
+    span {
+      transition: color 0.3s ease;
+    }
+  }
+
+  a::before {
+    content: "";
+    background: var(--purplePrimary);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 0px 100px 100px 0px;
+    left: -100%;
+    z-index: -1;
+    transition: left 0.3s ease;
   }
 
   &.selected a {
-    background: var(--purplePrimary);
-
-    &:hover {
-      background: var(--purpleSecondary);
+    &::before {
+      left: 0;
     }
 
     svg path {
