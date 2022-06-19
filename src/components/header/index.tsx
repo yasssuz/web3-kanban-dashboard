@@ -18,7 +18,7 @@ interface HeaderProps {
 function Header({ isSidebarOpen, boards, dashboardPath }: HeaderProps) {
   return (
     <HeaderContainer>
-      <LogoArea>
+      <LogoArea isSidebarOpen={isSidebarOpen}>
         <LogoDesktop src='/logos/logo-dark.svg' alt='kanban' />
         <LogoMobile src='/logos/logo-mobile.svg' alt='kanban' />
       </LogoArea>

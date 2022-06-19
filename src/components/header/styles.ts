@@ -4,27 +4,40 @@ import { MediaQuery } from "../../utils/globals";
 export const HeaderContainer = styled.header`
   border-bottom: 1px solid var(--line);
   display: grid;
-  grid-template-columns: 209px 1fr;
+  grid-template-columns: min-content 1fr;
   height: 96px;
+  background: var(--secondaryBg);
+  transition: height 0.3s ease;
 
   ${MediaQuery.md} {
-    grid-template-columns: 200px 1fr;
     height: 81px;
   }
 
   ${MediaQuery.sm} {
-    grid-template-columns: 56px 1fr;
     height: 64px;
   }
 `;
 
-export const LogoArea = styled.div`
+export const LogoArea = styled.div<{ isSidebarOpen: boolean }>`
   border-right: 1px solid var(--line);
+  display: flex;
+  align-items: center;
   height: 100%;
-  display: grid;
-  place-content: center;
+  padding-left: 32px;
+  width: ${props => (props.isSidebarOpen ? "300px" : "209px")};
+  transition: width ${props => (props.isSidebarOpen ? "0.3s" : "0.5s")}
+      cubic-bezier(0.53, 0.21, 0, 1),
+    padding-left 0.3s ease;
+  transition-delay: ${props => (props.isSidebarOpen ? "0.27s" : "0s")};
+
+  ${MediaQuery.md} {
+    width: 200px;
+    padding-left: 24px;
+  }
 
   ${MediaQuery.sm} {
+    width: 56px;
+    padding-left: 16px;
     border-right: 0;
   }
 `;
