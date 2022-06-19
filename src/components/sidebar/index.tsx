@@ -4,9 +4,12 @@ import Text from "../shared/typography/text";
 import {
   Board,
   BoardsList,
+  BottomArea,
   OpenSidebarButton,
   SidebarContainer,
+  ThemeSwitcherContainer,
   TopArea,
+  Switcher,
 } from "./styles";
 
 interface SidebarProps {
@@ -22,6 +25,19 @@ function Sidebar({
   boards,
   dashboardPath,
 }: SidebarProps) {
+  function handleThemeChange() {
+    const currentTheme = document.body.getAttribute("data-theme");
+
+    document.body.setAttribute(
+      "data-theme",
+      (currentTheme === "dark" && "light") || "dark"
+    );
+    localStorage.setItem(
+      "data-theme",
+      (currentTheme === "dark" && "light") || "dark"
+    );
+  }
+
   return (
     <>
       <OpenSidebarButton
@@ -61,7 +77,19 @@ function Sidebar({
             ))}
           </BoardsList>
         </TopArea>
-        {/* <BottomArea></BottomArea> */}
+        <BottomArea>
+          <ThemeSwitcherContainer>
+            <img src='/icons/icon-light-theme.svg' alt='set light theme' />
+            <input
+              id='themeSwitcher'
+              name='themeSwitcher'
+              type='checkbox'
+              onChange={handleThemeChange}
+            />
+            <Switcher htmlFor='themeSwitcher' />
+            <img src='/icons/icon-dark-theme.svg' alt='set dark theme' />
+          </ThemeSwitcherContainer>
+        </BottomArea>
       </SidebarContainer>
     </>
   );

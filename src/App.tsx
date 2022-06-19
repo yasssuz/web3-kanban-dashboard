@@ -1,14 +1,28 @@
 import { Global } from "@emotion/react";
 import { globalStyles } from "./utils/globals";
 import Dashboard from "./components/dashboard";
-import { Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import BaseLayout from "./layouts/base-layout";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    const currentTheme = localStorage.getItem("data-theme");
+
+    document.body.setAttribute(
+      "data-theme",
+      (currentTheme === "dark" && "dark") ||
+        (currentTheme === "light" && "light") ||
+        "light"
+    );
+    if (currentTheme === "dark")
+      (document.getElementById("themeSwitcher") as HTMLInputElement).checked =
+        true;
+  }, []);
+
   return (
     <>
       <Global styles={globalStyles} />
-
       <Routes>
         {/* <Route path="/login" element={<Login />} /> */}
         <Route path='/dashboard' element={<BaseLayout />}>

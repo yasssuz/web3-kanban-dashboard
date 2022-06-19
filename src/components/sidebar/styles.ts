@@ -38,7 +38,7 @@ export const OpenSidebarButton = styled.button<{ isSidebarOpen: boolean }>`
 export const SidebarContainer = styled.aside<{ isSidebarOpen: boolean }>`
   position: fixed;
   width: 300px;
-  height: 100%;
+  height: calc(100% - 95px);
   left: ${props => (props.isSidebarOpen ? "0px" : "-300px")};
   background: var(--secondaryBg);
   border-right: 1px solid var(--line);
@@ -51,10 +51,15 @@ export const SidebarContainer = styled.aside<{ isSidebarOpen: boolean }>`
 
   ${MediaQuery.md} {
     width: 261px;
+    height: calc(100% - 80px);
+  }
+
+  ${MediaQuery.sm} {
+    height: calc(100% - 63px);
   }
 `;
 
-export const TopArea = styled.div`
+export const TopArea = styled.section`
   & > strong {
     padding-left: 32px;
     margin-bottom: 19px;
@@ -126,5 +131,49 @@ export const Board = styled.li`
     span {
       color: var(--white) !important;
     }
+  }
+`;
+
+export const BottomArea = styled.section`
+  padding: 0 25px;
+`;
+
+export const ThemeSwitcherContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  border-radius: 6px;
+  background: var(--primaryBg);
+  gap: 26px;
+
+  input {
+    display: none;
+  }
+
+  input:checked + label::before {
+    left: 23px;
+  }
+`;
+
+export const Switcher = styled.label`
+  height: 20px;
+  width: 40px;
+  border-radius: 12px;
+  background: var(--purplePrimary);
+  position: relative;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    height: 14px;
+    width: 14px;
+    background: var(--white);
+    left: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: left 0.2s cubic-bezier(0.53, 0.21, 0, 1);
   }
 `;
