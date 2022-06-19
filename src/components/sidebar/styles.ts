@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { MediaQuery } from "../../utils/globals";
 
 export const OpenSidebarButton = styled.button<{ isSidebarOpen: boolean }>`
   background: var(--purplePrimary);
@@ -45,8 +46,12 @@ export const SidebarContainer = styled.aside<{ isSidebarOpen: boolean }>`
   flex-direction: column;
   justify-content: space-between;
   padding: 15px 0 47px;
-  transition: left 0.5s cubic-bezier(0.53, 0.21, 0, 1);
+  transition: all 0.5s cubic-bezier(0.53, 0.21, 0, 1);
   transition-delay: ${props => (props.isSidebarOpen ? "0.25s" : "0s")};
+
+  ${MediaQuery.md} {
+    width: 261px;
+  }
 `;
 
 export const TopArea = styled.div`

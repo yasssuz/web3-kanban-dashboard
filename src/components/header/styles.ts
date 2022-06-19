@@ -33,6 +33,7 @@ export const LogoArea = styled.div<{ isSidebarOpen: boolean }>`
   ${MediaQuery.md} {
     width: 200px;
     padding-left: 24px;
+    width: 261px;
   }
 
   ${MediaQuery.sm} {
