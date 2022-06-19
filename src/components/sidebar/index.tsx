@@ -5,6 +5,7 @@ import {
   Board,
   BoardsList,
   BottomArea,
+  HideSibebarButton,
   OpenSidebarButton,
   SidebarContainer,
   ThemeSwitcherContainer,
@@ -12,9 +13,11 @@ import {
   Switcher,
 } from "./styles";
 
+type SidebarPrevState = (prevState: boolean) => boolean;
+
 interface SidebarProps {
   isSidebarOpen: boolean;
-  setIsSidebarOpen(state: (prevState: boolean) => boolean): void;
+  setIsSidebarOpen(state: boolean | SidebarPrevState): void;
   boards: { title: string; path: string }[];
   dashboardPath: string | undefined;
 }
@@ -89,6 +92,13 @@ function Sidebar({
             <Switcher htmlFor='themeSwitcher' />
             <img src='/icons/icon-dark-theme.svg' alt='set dark theme' />
           </ThemeSwitcherContainer>
+          <HideSibebarButton
+            type='button'
+            onClick={() => setIsSidebarOpen(false)}
+          >
+            <img src='/icons/icon-hide-sidebar.svg' alt='close sidebar' />
+            Hide Sidebar
+          </HideSibebarButton>
         </BottomArea>
       </SidebarContainer>
     </>

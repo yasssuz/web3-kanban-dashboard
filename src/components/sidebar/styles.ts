@@ -177,3 +177,18 @@ export const Switcher = styled.label`
     transition: left 0.2s cubic-bezier(0.53, 0.21, 0, 1);
   }
 `;
+
+export const HideSibebarButton = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 19px;
+  color: var(--gray);
+  margin-top: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+`;
