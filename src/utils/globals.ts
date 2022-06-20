@@ -18,6 +18,7 @@ export const globalStyles = css`
     --line: #e4ebfa;
     --primaryBg: #f4f7fd;
     --secondaryBg: #ffffff;
+    --logo: #000112;
   }
 
   [data-theme="dark"] {
@@ -25,6 +26,7 @@ export const globalStyles = css`
     --line: #3e3f4e;
     --primaryBg: #20212c;
     --secondaryBg: #2b2c37;
+    --logo: #ffffff;
   }
 
   *,
