@@ -12,8 +12,8 @@ export const OpenSidebarButton = styled.button<{ isSidebarOpen: boolean }>`
   position: fixed;
   left: ${props => (props.isSidebarOpen ? "-56px" : "0px")};
   bottom: 32px;
-  transition: left 0.3s cubic-bezier(0.53, 0.21, 0, 1);
-  transition-delay: ${props => (props.isSidebarOpen ? "0s" : "0.4s")};
+  transition: left 0.3s cubic-bezier(0.53, 0.21, 0, 1)
+    ${props => (props.isSidebarOpen ? "0s" : "0.4s")};
   cursor: pointer;
   overflow: hidden;
 
@@ -46,8 +46,12 @@ export const SidebarContainer = styled.aside<{ isSidebarOpen: boolean }>`
   flex-direction: column;
   justify-content: space-between;
   padding: 15px 0 47px;
-  transition: all 0.5s cubic-bezier(0.53, 0.21, 0, 1);
-  transition-delay: ${props => (props.isSidebarOpen ? "0.25s" : "0s")};
+  transition: left 0.5s cubic-bezier(0.53, 0.21, 0, 1)
+      ${props => (props.isSidebarOpen ? "0.25s" : "0s")},
+    width 0.5s cubic-bezier(0.53, 0.21, 0, 1),
+    height 0.5s cubic-bezier(0.53, 0.21, 0, 1),
+    background 0.25s cubic-bezier(0.53, 0.21, 0, 1),
+    border-right 0.25s cubic-bezier(0.53, 0.21, 0, 1);
 
   ${MediaQuery.md} {
     width: 261px;

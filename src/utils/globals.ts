@@ -33,6 +33,7 @@ export const globalStyles = css`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: background 0.25s cubic-bezier(0.53, 0.21, 0, 1);
   }
 
   body {

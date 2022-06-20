@@ -7,7 +7,8 @@ export const HeaderContainer = styled.header`
   grid-template-columns: min-content 1fr;
   height: 96px;
   background: var(--secondaryBg);
-  transition: height 0.3s ease;
+  transition: height 0.3s ease, background 0.25s cubic-bezier(0.53, 0.21, 0, 1),
+    border-bottom 0.25s cubic-bezier(0.53, 0.21, 0, 1);
 
   ${MediaQuery.md} {
     height: 81px;
@@ -26,14 +27,15 @@ export const LogoArea = styled.div<{ isSidebarOpen: boolean }>`
   padding-left: 32px;
   width: ${props => (props.isSidebarOpen ? "300px" : "209px")};
   transition: width ${props => (props.isSidebarOpen ? "0.3s" : "0.5s")}
-      cubic-bezier(0.53, 0.21, 0, 1),
-    padding-left 0.3s ease;
-  transition-delay: ${props => (props.isSidebarOpen ? "0.27s" : "0s")};
+      cubic-bezier(0.53, 0.21, 0, 1)
+      ${props => (props.isSidebarOpen ? "0.27s" : "0s")},
+    padding-left 0.3s cubic-bezier(0.53, 0.21, 0, 1)
+      ${props => (props.isSidebarOpen ? "0.27s" : "0s")},
+    border-right 0.25s cubic-bezier(0.53, 0.21, 0, 1);
 
   ${MediaQuery.md} {
-    width: 200px;
+    width: ${props => (props.isSidebarOpen ? "261px" : "200px")};
     padding-left: 24px;
-    width: 261px;
   }
 
   ${MediaQuery.sm} {
@@ -43,7 +45,11 @@ export const LogoArea = styled.div<{ isSidebarOpen: boolean }>`
   }
 `;
 
-export const LogoDesktop = styled.img`
+export const LogoDesktop = styled.svg`
+  path {
+    transition: fill 0.25s cubic-bezier(0.53, 0.21, 0, 1);
+  }
+
   ${MediaQuery.sm} {
     display: none;
   }
