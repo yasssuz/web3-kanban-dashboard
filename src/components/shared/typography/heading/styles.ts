@@ -5,21 +5,21 @@ import { MediaQuery } from "../../../../utils/globals";
 
 export const HeadingContainer = styled.h1<HeadingProps>`
   font-size: ${props =>
-    (props.size === "extraLarge" && "24px") ||
-    (props.size === "large" && "18px") ||
-    (props.size === "medium" && "15px") ||
+    (props.size === "large" && "24px") ||
+    (props.size === "medium" && "18px") ||
+    (props.size === "small" && "15px") ||
     "12px"};
   line-height: ${props =>
-    (props.size === "extraLarge" && "30px") ||
-    (props.size === "large" && "23px") ||
-    (props.size === "medium" && "19px") ||
+    (props.size === "large" && "30px") ||
+    (props.size === "medium" && "23px") ||
+    (props.size === "small" && "19px") ||
     "15px"};
   color: ${props => (props.size === "small" ? "var(--gray)" : "var(--text)")};
   font-weight: bold;
   letter-spacing: ${props => (props.size === "small" ? "2.4px" : "")};
 
   ${props =>
-    props.size === "extraLarge" &&
+    props.size === "large" &&
     css`
       ${MediaQuery.md} {
         font-size: 20px;

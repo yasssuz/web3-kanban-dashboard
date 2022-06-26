@@ -36,7 +36,7 @@ function Header({ isSidebarOpen, boards, dashboardPath }: HeaderProps) {
         <LogoMobile src='/logos/logo-mobile.svg' alt='kanban' />
       </LogoArea>
       <InteractionArea>
-        <Heading as='h1' size='extraLarge'>
+        <Heading as='h1' size='large'>
           {boards.find(board => board.path === dashboardPath)?.title}
         </Heading>
         <Button
