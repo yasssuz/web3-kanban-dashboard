@@ -19,6 +19,8 @@ export const ButtonContainer = styled.button<ButtonProps>`
   height: ${props => (props.size === "large" ? "48px" : "40px")};
   width: ${props => (props.width ? props.width : "100%")};
   transition: background-color 0.3s ease-out;
+  border: none;
+  cursor: pointer;
 
   ${props =>
     props.disabled &&

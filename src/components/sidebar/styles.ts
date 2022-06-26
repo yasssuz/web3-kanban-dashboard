@@ -38,7 +38,8 @@ export const OpenSidebarButton = styled.button<{ isSidebarOpen: boolean }>`
 export const SidebarContainer = styled.aside<{ isSidebarOpen: boolean }>`
   position: fixed;
   width: 300px;
-  height: calc(100% - 95px);
+  height: calc(100vh - 95px);
+  bottom: 0;
   left: ${props => (props.isSidebarOpen ? "0px" : "-300px")};
   background: var(--secondaryBg);
   border-right: 1px solid var(--line);

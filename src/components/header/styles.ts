@@ -5,10 +5,15 @@ export const HeaderContainer = styled.header`
   border-bottom: 1px solid var(--line);
   display: grid;
   grid-template-columns: min-content 1fr;
-  height: 96px;
   background: var(--secondaryBg);
   transition: height 0.3s ease, background 0.25s cubic-bezier(0.53, 0.21, 0, 1),
     border-bottom 0.25s cubic-bezier(0.53, 0.21, 0, 1);
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  z-index: 10;
+  height: 96px;
 
   ${MediaQuery.md} {
     height: 81px;
