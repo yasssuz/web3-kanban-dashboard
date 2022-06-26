@@ -26,7 +26,7 @@ function App() {
       <Routes>
         {/* <Route path="/login" element={<Login />} /> */}
         <Route path='/dashboard' element={<BaseLayout />}>
-          <Route index element={<h1>dashboard index</h1>} />
+          <Route index element={<Dashboard index />} />
           <Route path='/dashboard/:dashboardPath' element={<Dashboard />} />
         </Route>
         <Route path='*' element={<h1>nothing here</h1>} />
