@@ -24,7 +24,7 @@ function NoColumns() {
         </Button>
       </Container>
       <Modal isOpen={isModalOpen}>
-        <EditOrCreateBoardModalState edit />
+        <EditOrCreateBoardModalState edit setIsModalOpen={setIsModalOpen} />
       </Modal>
     </>
   );
