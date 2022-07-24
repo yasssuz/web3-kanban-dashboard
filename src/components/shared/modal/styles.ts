@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { m } from "framer-motion";
-import { MediaQuery } from "../../../utils/globals";
+import { MediaQuery } from "../../../utils/cssGlobals";
 
 export const Overflow = styled(m.div)`
   position: fixed;

@@ -1,5 +1,5 @@
 import { Global } from "@emotion/react";
-import { globalStyles } from "./utils/globals";
+import { globalStyles } from "./utils/cssGlobals";
 import Dashboard from "./pages/dashboard";
 import { Route, Routes } from "react-router-dom";
 import BaseLayout from "./layouts/base-layout";

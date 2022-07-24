@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { MediaQuery } from "../../utils/globals";
+import { MediaQuery } from "../../utils/cssGlobals";
 
 export const HeaderContainer = styled.header`
   border-bottom: 1px solid var(--line);

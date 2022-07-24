@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { HeadingProps } from ".";
-import { MediaQuery } from "../../../../utils/globals";
+import { MediaQuery } from "../../../../utils/cssGlobals";
 
 export const HeadingContainer = styled.h1<HeadingProps>`
   font-size: ${props =>

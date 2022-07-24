@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { MediaQuery } from "../../utils/globals";
+import { MediaQuery } from "../../utils/cssGlobals";
 
 export const OpenSidebarButton = styled.button<{ isSidebarOpen: boolean }>`
   background: var(--purplePrimary);

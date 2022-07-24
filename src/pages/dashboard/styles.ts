@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { MediaQuery } from "../../utils/globals";
+import { MediaQuery } from "../../utils/cssGlobals";
 
 export const DashboardContainer = styled.main<{ isCentralized: boolean }>`
   display: grid;
