@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import { ModalContainer, Overflow } from "./styles";
 import { LazyMotion, domAnimation, AnimatePresence } from "framer-motion";
 
