@@ -4,6 +4,8 @@ import Dashboard from "./components/dashboard";
 import { Route, Routes } from "react-router-dom";
 import BaseLayout from "./layouts/base-layout";
 import { useEffect } from "react";
+import { AuthProvider } from "./contexts/auth-context";
+import Login from "./pages/login";
 
 function App() {
   useEffect(() => {
@@ -23,14 +25,16 @@ function App() {
   return (
     <>
       <Global styles={globalStyles} />
-      <Routes>
-        {/* <Route path="/login" element={<Login />} /> */}
-        <Route path='/dashboard' element={<BaseLayout />}>
-          <Route index element={<Dashboard index />} />
-          <Route path='/dashboard/:dashboardPath' element={<Dashboard />} />
-        </Route>
-        <Route path='*' element={<h1>nothing here</h1>} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path='/login' element={<Login />} />
+          <Route path='/dashboard' element={<BaseLayout />}>
+            <Route index element={<Dashboard index />} />
+            <Route path='/dashboard/:dashboardPath' element={<Dashboard />} />
+          </Route>
+          <Route path='*' element={<h1>NOT FOUND 404</h1>} />
+        </Routes>
+      </AuthProvider>
     </>
   );
 }
