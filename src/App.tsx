@@ -1,6 +1,6 @@
 import { Global } from "@emotion/react";
 import { globalStyles } from "./utils/globals";
-import Dashboard from "./components/dashboard";
+import Dashboard from "./pages/dashboard";
 import { Route, Routes } from "react-router-dom";
 import BaseLayout from "./layouts/base-layout";
 import { useEffect } from "react";

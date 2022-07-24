@@ -1,4 +1,4 @@
-import NoColumns from "./no-columns";
+import NoColumns from "../../components/dashboard/no-columns";
 import { DashboardContainer } from "./styles";
 
 interface DashboardProps {
