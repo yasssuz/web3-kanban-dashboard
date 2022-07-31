@@ -1,9 +1,9 @@
 export interface BoardInterface {
   title: string;
-  path: string;
+  guid: string;
 }
 
 export interface BoardColumn {
-  path: string;
+  boardGuid: string;
   columns: { title: string; guid: string }[];
 }

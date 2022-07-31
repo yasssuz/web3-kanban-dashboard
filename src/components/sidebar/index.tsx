@@ -57,12 +57,12 @@ function Sidebar({
             ALL BOARDS ({boards.length})
           </Heading>
           <BoardsList>
-            {boards.map(({ title, path }, index) => (
+            {boards.map(({ title, guid }, index) => (
               <Board
-                className={dashboardPath === path ? "selected" : ""}
+                className={dashboardPath === guid ? "selected" : ""}
                 key={index}
               >
-                <Link to={`/dashboard/${path}`}>
+                <Link to={`/dashboard/${guid}`}>
                   <svg
                     width='16'
                     height='16'
