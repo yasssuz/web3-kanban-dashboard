@@ -2,7 +2,8 @@ import { AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
 import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
-import { boards, columns } from "../../../data";
+import { createGuid } from "../../../utils/generators";
+import { BoardColumn, BoardInterface } from "../../../utils/types";
 import Button from "../../shared/buttons";
 import Input from "../../shared/input";
 import Heading from "../../shared/typography/heading";
@@ -24,7 +25,7 @@ type EditOrCreateBoardModalStateProps = {
 
 interface FormProps {
   boardName: string;
-  dynamicColumns: { title: string }[];
+  dynamicColumns: BoardColumn["columns"];
 }
 
 function EditOrCreateBoardModalState({
@@ -42,17 +43,53 @@ function EditOrCreateBoardModalState({
     control,
     name: "dynamicColumns",
   });
-  const { dashboardPath } = useParams();
+  const { boardGuid } = useParams();
 
-  const onSubmit: SubmitHandler<FormProps> = data => {
+  const onSubmit: SubmitHandler<FormProps> = ({
+    boardName,
+    dynamicColumns,
+  }) => {
+    const currentBoard: BoardInterface = JSON.parse(
+      localStorage.getItem("@Kanban:boards") as string
+    ).find((board: BoardInterface) => board.guid === boardGuid);
+
+    const storedColumns = JSON.parse(
+      localStorage.getItem("@Kanban:columns") as string
+    );
+    const storedBoards = JSON.parse(
+      localStorage.getItem("@Kanban:boards") as string
+    );
+    const updatedColumns = [
+      ...storedColumns.map((column: BoardColumn) => {
+        if (column.boardGuid === currentBoard.guid)
+          return { ...column, columns: dynamicColumns };
+        return column;
+      }),
+    ];
+    const updatedBoards = [
+      ...storedBoards.map((board: BoardInterface) => {
+        if (board.guid === currentBoard.guid)
+          return { ...board, title: boardName };
+        return board;
+      }),
+    ];
+
+    localStorage.setItem("@Kanban:columns", JSON.stringify(updatedColumns));
+    localStorage.setItem("@Kanban:boards", JSON.stringify(updatedBoards));
     setIsModalOpen(false);
   };
 
   useEffect(() => {
-    setValue(
-      "boardName",
-      boards.find(board => board.path === dashboardPath)?.title || ""
-    );
+    const title = JSON.parse(
+      localStorage.getItem("@Kanban:boards") as string
+    ).find((boardObj: BoardInterface) => boardObj.guid === boardGuid)?.title;
+    const columns: BoardColumn["columns"] = JSON.parse(
+      localStorage.getItem("@Kanban:columns") as string
+    ).find(
+      (columnObj: BoardColumn) => columnObj.boardGuid === boardGuid
+    )?.columns;
+
+    setValue("boardName", title || "");
     columns && replace(columns);
   }, []);
 
@@ -96,7 +133,7 @@ function EditOrCreateBoardModalState({
         </ColumnsList>
         <Button
           variant='secondary'
-          onClick={() => append({ title: "" })}
+          onClick={() => append({ title: "", guid: createGuid() })}
           type='button'
         >
           + Add New Column
