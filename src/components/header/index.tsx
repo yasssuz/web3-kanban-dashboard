@@ -1,3 +1,4 @@
+import { BoardInterface } from "../../utils/types";
 import Button from "../shared/buttons";
 import Heading from "../shared/typography/heading";
 import {
@@ -11,7 +12,7 @@ import {
 
 interface HeaderProps {
   isSidebarOpen: boolean;
-  boards: { title: string; path: string }[];
+  boards: BoardInterface[];
   dashboardPath: string | undefined;
 }
 

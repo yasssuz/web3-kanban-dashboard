@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { BoardInterface } from "../../utils/types";
 import Heading from "../shared/typography/heading";
 import Text from "../shared/typography/text";
 import {
@@ -18,7 +19,7 @@ type SidebarPrevState = (prevState: boolean) => boolean;
 interface SidebarProps {
   isSidebarOpen: boolean;
   setIsSidebarOpen(state: boolean | SidebarPrevState): void;
-  boards: { title: string; path: string }[];
+  boards: BoardInterface[];
   dashboardPath: string | undefined;
 }
 
