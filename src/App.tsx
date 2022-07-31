@@ -30,7 +30,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/dashboard' element={<BaseLayout />}>
             <Route index element={<Dashboard index />} />
-            <Route path='/dashboard/:dashboardPath' element={<Dashboard />} />
+            <Route path='/dashboard/:boardGuid' element={<Dashboard />} />
           </Route>
           <Route path='*' element={<h1>NOT FOUND 404</h1>} />
         </Routes>

@@ -13,10 +13,10 @@ import {
 interface HeaderProps {
   isSidebarOpen: boolean;
   boards: BoardInterface[];
-  dashboardPath: string | undefined;
+  boardGuid: string | undefined;
 }
 
-function Header({ isSidebarOpen, boards, dashboardPath }: HeaderProps) {
+function Header({ isSidebarOpen, boards, boardGuid }: HeaderProps) {
   return (
     <HeaderContainer>
       <LogoArea isSidebarOpen={isSidebarOpen}>
@@ -38,7 +38,7 @@ function Header({ isSidebarOpen, boards, dashboardPath }: HeaderProps) {
       </LogoArea>
       <InteractionArea>
         <Heading as='h1' size='large'>
-          {boards.find(board => board.path === dashboardPath)?.title}
+          {boards.find(board => board.guid === boardGuid)?.title}
         </Heading>
         <Button
           variant='primary'

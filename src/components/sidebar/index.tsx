@@ -20,14 +20,14 @@ interface SidebarProps {
   isSidebarOpen: boolean;
   setIsSidebarOpen(state: boolean | SidebarPrevState): void;
   boards: BoardInterface[];
-  dashboardPath: string | undefined;
+  boardGuid: string | undefined;
 }
 
 function Sidebar({
   isSidebarOpen,
   setIsSidebarOpen,
   boards,
-  dashboardPath,
+  boardGuid,
 }: SidebarProps) {
   function handleThemeChange() {
     const currentTheme = document.body.getAttribute("data-theme");
@@ -59,7 +59,7 @@ function Sidebar({
           <BoardsList>
             {boards.map(({ title, guid }, index) => (
               <Board
-                className={dashboardPath === guid ? "selected" : ""}
+                className={boardGuid === guid ? "selected" : ""}
                 key={index}
               >
                 <Link to={`/dashboard/${guid}`}>
