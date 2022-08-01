@@ -21,7 +21,7 @@ export const ModalContainer = styled(m.section)`
   padding: 32px;
   width: 100%;
   border-radius: 6px;
-  background: var(--white);
+  background: var(--secondaryBg);
   max-width: 480px;
 
   ${MediaQuery.sm} {
