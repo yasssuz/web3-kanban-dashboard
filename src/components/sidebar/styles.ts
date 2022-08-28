@@ -1,3 +1,4 @@
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { MediaQuery } from "../../utils/cssGlobals";
 
@@ -77,8 +78,17 @@ export const BoardsList = styled.ul`
   padding-right: 24px;
 `;
 
-export const Board = styled.li`
-  a {
+export const Board = styled.li<{ createBoard?: boolean }>`
+  ${props =>
+    props.createBoard &&
+    css`
+      span {
+        color: var(--purplePrimary);
+      }
+    `}
+
+  a,
+  button {
     position: relative;
     text-decoration: none;
     border-radius: 0px 100px 100px 0px;
@@ -88,6 +98,9 @@ export const Board = styled.li`
     padding: 14px 32px;
     transition: background-color 0.3s ease-out;
     overflow: hidden;
+    background: transparent;
+    border: none;
+    cursor: pointer;
 
     span {
       transition: color 0.3s ease;

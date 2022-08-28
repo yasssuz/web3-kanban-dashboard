@@ -49,25 +49,61 @@ function EditOrCreateBoardModalState({
     boardName,
     dynamicColumns,
   }) => {
-    const currentBoard: BoardInterface = JSON.parse(
+    const storedBoards: BoardInterface[] = JSON.parse(
       localStorage.getItem("@Kanban:boards") as string
-    ).find((board: BoardInterface) => board.guid === boardGuid);
-
-    const storedColumns = JSON.parse(
+    );
+    const storedColumns: BoardColumn[] = JSON.parse(
       localStorage.getItem("@Kanban:columns") as string
     );
-    const storedBoards = JSON.parse(
-      localStorage.getItem("@Kanban:boards") as string
+
+    create
+      ? createBoard(boardName, dynamicColumns, storedBoards, storedColumns)
+      : editBoard(boardName, dynamicColumns, storedBoards, storedColumns);
+    setIsModalOpen(false);
+  };
+
+  function createBoard(
+    boardName: string,
+    dynamicColumns: BoardColumn["columns"],
+    storedBoards: BoardInterface[],
+    storedColumns: BoardColumn[]
+  ) {
+    const newBoard = { title: boardName, guid: createGuid() };
+
+    localStorage.setItem(
+      "@Kanban:boards",
+      JSON.stringify([
+        ...(storedBoards ? storedBoards : []),
+        newBoard,
+      ] as BoardInterface[])
     );
+    localStorage.setItem(
+      "@Kanban:columns",
+      JSON.stringify([
+        ...(storedColumns ? storedColumns : []),
+        { boardGuid: newBoard.guid, columns: dynamicColumns },
+      ] as BoardColumn[])
+    );
+  }
+
+  function editBoard(
+    boardName: string,
+    dynamicColumns: BoardColumn["columns"],
+    storedBoards: BoardInterface[],
+    storedColumns: BoardColumn[]
+  ) {
+    const currentBoard: BoardInterface = JSON.parse(
+      localStorage.getItem("@Kanban:boards") as string
+    )?.find((board: BoardInterface) => board.guid === boardGuid);
     const updatedColumns = [
-      ...storedColumns.map((column: BoardColumn) => {
+      ...storedColumns?.map((column: BoardColumn) => {
         if (column.boardGuid === currentBoard.guid)
           return { ...column, columns: dynamicColumns };
         return column;
       }),
     ];
     const updatedBoards = [
-      ...storedBoards.map((board: BoardInterface) => {
+      ...storedBoards?.map((board: BoardInterface) => {
         if (board.guid === currentBoard.guid)
           return { ...board, title: boardName };
         return board;
@@ -76,16 +112,16 @@ function EditOrCreateBoardModalState({
 
     localStorage.setItem("@Kanban:columns", JSON.stringify(updatedColumns));
     localStorage.setItem("@Kanban:boards", JSON.stringify(updatedBoards));
-    setIsModalOpen(false);
-  };
+  }
 
   useEffect(() => {
+    if (create) return;
     const title = JSON.parse(
       localStorage.getItem("@Kanban:boards") as string
-    ).find((boardObj: BoardInterface) => boardObj.guid === boardGuid)?.title;
+    )?.find((boardObj: BoardInterface) => boardObj.guid === boardGuid)?.title;
     const columns: BoardColumn["columns"] = JSON.parse(
       localStorage.getItem("@Kanban:columns") as string
-    ).find(
+    )?.find(
       (columnObj: BoardColumn) => columnObj.boardGuid === boardGuid
     )?.columns;
 
