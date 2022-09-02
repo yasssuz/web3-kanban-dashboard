@@ -19,6 +19,11 @@ export const globalStyles = css`
     --primaryBg: #f4f7fd;
     --secondaryBg: #ffffff;
     --logo: #000112;
+    --linearGradientBg: linear-gradient(
+      180deg,
+      #e9effa 0%,
+      rgba(233, 239, 250, 0.5) 100%
+    );
   }
 
   [data-theme="dark"] {
@@ -27,6 +32,11 @@ export const globalStyles = css`
     --primaryBg: #20212c;
     --secondaryBg: #2b2c37;
     --logo: #ffffff;
+    --linearGradientBg: linear-gradient(
+      180deg,
+      rgba(43, 44, 55, 0.25) 0%,
+      rgba(43, 44, 55, 0.125) 100%
+    );
   }
 
   *,
