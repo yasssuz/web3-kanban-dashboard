@@ -17,6 +17,7 @@ export const HeadingContainer = styled.h1<HeadingProps>`
   color: ${props => (props.size === "small" ? "var(--gray)" : "var(--text)")};
   font-weight: bold;
   letter-spacing: ${props => (props.size === "small" ? "2.4px" : "")};
+  font-family: "Plus Jakarta Sans";
 
   ${props =>
     props.size === "large" &&
