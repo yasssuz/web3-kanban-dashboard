@@ -1,15 +1,15 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, useParams } from "react-router-dom";
 import Header from "../../components/header";
 import Sidebar from "../../components/sidebar";
-import { AuthContext } from "../../contexts/auth-context";
+import { useAuth } from "../../hooks";
 import { BoardInterface } from "../../utils/types";
 
 function BaseLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const [boardsList, setBoardsList] = useState<BoardInterface[]>([]);
 
-  const { authMethod } = useContext(AuthContext);
+  const { authMethod } = useAuth();
   const { boardGuid } = useParams();
 
   useEffect(() => {
