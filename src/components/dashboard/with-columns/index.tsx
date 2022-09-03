@@ -16,12 +16,15 @@ import {
 } from "./styles";
 
 interface WithColumnsProps {
-  boardColumns: BoardColumn["columns"];
+  boardGuid: string;
 }
 
-function WithColumns({ boardColumns }: WithColumnsProps) {
+function WithColumns({ boardGuid }: WithColumnsProps) {
   const [showEditBoardModal, setShowEditBoardModal] = useState<boolean>(false);
 
+  const boardColumns: BoardColumn["columns"] = JSON.parse(
+    localStorage.getItem("@Kanban:columns") as string
+  )?.find((column: BoardColumn) => column.boardGuid === boardGuid)?.columns;
   const columnsTasks: ColumnTask[] = JSON.parse(
     localStorage.getItem("@Kanban:tasks") as string
   );

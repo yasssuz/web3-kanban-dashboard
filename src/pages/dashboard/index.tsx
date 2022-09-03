@@ -18,7 +18,7 @@ function Dashboard({ index }: DashboardProps) {
     <DashboardContainer isCentralized={!boardColumns?.length || !!index}>
       {(index && <h1>index</h1>) ||
         (!boardColumns?.length && <NoColumns />) || (
-          <WithColumns boardColumns={boardColumns} />
+          <WithColumns boardGuid={boardGuid as string} />
         )}
     </DashboardContainer>
   );
