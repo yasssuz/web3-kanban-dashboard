@@ -11,13 +11,13 @@ function NoColumns() {
   return (
     <>
       <Container>
-        <Heading as='h2' size='medium'>
+        <Heading as="h2" size="medium">
           This board is empty. Create a new column to get started.
         </Heading>
         <Button
-          variant='primary'
-          size='large'
-          width='174px'
+          variant="primary"
+          size="large"
+          width="174px"
           onClick={() => setIsModalOpen(true)}
         >
           + Add New Column

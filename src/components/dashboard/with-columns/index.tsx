@@ -38,28 +38,28 @@ function WithColumns({ boardGuid }: WithColumnsProps) {
   return (
     <>
       <Container>
-        {boardColumns?.map(column => (
+        {boardColumns?.map((column) => (
           <Column key={column.guid}>
             <ColumnTopArea>
               <Circle color={"#49C4E5"} />
               <Text
-                as='span'
-                size='small'
-                weight='bold'
+                as="span"
+                size="small"
+                weight="bold"
                 style={{ letterSpacing: "2.4px" }}
               >
                 {column.title} ({getTasksByColumn(column.guid)?.length || 0})
               </Text>
             </ColumnTopArea>
             <TasksList>
-              {getTasksByColumn(column.guid)?.map(task => (
+              {getTasksByColumn(column.guid)?.map((task) => (
                 <Task key={task.guid}></Task>
               ))}
               <CreateTask>
                 <button>
                   <Heading
-                    as='h2'
-                    size='large'
+                    as="h2"
+                    size="large"
                     style={{ color: "var(--gray)" }}
                   >
                     + New Task
@@ -71,7 +71,7 @@ function WithColumns({ boardGuid }: WithColumnsProps) {
         ))}
         <CreateColumn>
           <button onClick={() => setShowEditBoardModal(true)}>
-            <Heading as='h2' size='large' style={{ color: "var(--gray)" }}>
+            <Heading as="h2" size="large" style={{ color: "var(--gray)" }}>
               + New Column
             </Heading>
           </button>
