@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAuth } from "../../../hooks";
 import { BoardColumn, ColumnTask } from "../../../utils/types";
 import EditOrCreateBoardModalState from "../../modal-states/edit-or-create-board";
 import Modal from "../../shared/modal";
@@ -16,18 +17,22 @@ import {
 } from "./styles";
 
 interface WithColumnsProps {
+  boardColumnsList: BoardColumn["columns"];
+  setBoardColumnsList(state: BoardColumn["columns"]): void;
   boardGuid: string;
 }
 
-function WithColumns({ boardGuid }: WithColumnsProps) {
+function WithColumns({
+  boardGuid,
+  boardColumnsList,
+  setBoardColumnsList,
+}: WithColumnsProps) {
   const [showEditBoardModal, setShowEditBoardModal] = useState<boolean>(false);
 
-  const boardColumns: BoardColumn["columns"] = JSON.parse(
-    localStorage.getItem("@Kanban:columns") as string
-  )?.find((column: BoardColumn) => column.boardGuid === boardGuid)?.columns;
   const columnsTasks: ColumnTask[] = JSON.parse(
-    localStorage.getItem("@Kanban:tasks") as string
-  );
+      localStorage.getItem("@Kanban:tasks") as string
+    ),
+    { authMethod } = useAuth();
 
   function getTasksByColumn(columnGuid: string): ColumnTask["tasks"] {
     return columnsTasks?.find(
@@ -35,10 +40,20 @@ function WithColumns({ boardGuid }: WithColumnsProps) {
     )?.tasks as ColumnTask["tasks"];
   }
 
+  useEffect(() => {
+    if (authMethod === "local") {
+      setBoardColumnsList(
+        JSON.parse(localStorage.getItem("@Kanban:columns") as string)?.find(
+          (column: BoardColumn) => column.boardGuid === boardGuid
+        )?.columns
+      );
+    }
+  }, [showEditBoardModal]);
+
   return (
     <>
       <Container>
-        {boardColumns?.map((column) => (
+        {boardColumnsList?.map((column) => (
           <Column key={column.guid}>
             <ColumnTopArea>
               <Circle color={"#49C4E5"} />
