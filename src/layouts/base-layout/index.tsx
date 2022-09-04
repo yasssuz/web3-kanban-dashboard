@@ -34,6 +34,7 @@ function BaseLayout() {
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
         boards={boardsList}
+        setBoardsList={setBoardsList}
         boardGuid={boardGuid}
       />
       <Outlet />
