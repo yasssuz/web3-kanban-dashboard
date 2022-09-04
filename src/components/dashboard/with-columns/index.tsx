@@ -4,17 +4,8 @@ import { BoardColumn, ColumnTask } from "../../../utils/types";
 import EditOrCreateBoardModalState from "../../modal-states/edit-or-create-board";
 import Modal from "../../shared/modal";
 import Heading from "../../shared/typography/heading";
-import Text from "../../shared/typography/text";
-import {
-  Container,
-  Column,
-  TasksList,
-  CreateTask,
-  CreateColumn,
-  ColumnTopArea,
-  Circle,
-} from "./styles";
-import Task from "./task";
+import Column from "./column";
+import { Container, CreateColumn } from "./styles";
 
 interface WithColumnsProps {
   boardColumnsList: BoardColumn["columns"];
@@ -29,16 +20,7 @@ function WithColumns({
 }: WithColumnsProps) {
   const [showEditBoardModal, setShowEditBoardModal] = useState<boolean>(false);
 
-  const columnsTasks: ColumnTask[] = JSON.parse(
-      localStorage.getItem("@Kanban:tasks") as string
-    ),
-    { authMethod } = useAuth();
-
-  function getTasksByColumn(columnGuid: string): ColumnTask["tasks"] {
-    return columnsTasks?.find(
-      (task: ColumnTask) => task.columnGuid === columnGuid
-    )?.tasks as ColumnTask["tasks"];
-  }
+  const { authMethod } = useAuth();
 
   useEffect(() => {
     if (authMethod === "local") {
@@ -54,38 +36,10 @@ function WithColumns({
     <>
       <Container>
         {boardColumnsList?.map((column) => (
-          <Column key={column.guid}>
-            <ColumnTopArea>
-              <Circle color={"#49C4E5"} />
-              <Text
-                as="span"
-                size="small"
-                weight="bold"
-                style={{ letterSpacing: "2.4px" }}
-              >
-                {column.title} ({getTasksByColumn(column.guid)?.length || 0})
-              </Text>
-            </ColumnTopArea>
-            <TasksList>
-              {getTasksByColumn(column.guid)?.map((task) => (
-                <Task columnGuid={column.guid} task={task} key={task.guid} />
-              ))}
-              <CreateTask>
-                <button>
-                  <Heading
-                    as="h2"
-                    size="large"
-                    style={{ color: "var(--gray)" }}
-                  >
-                    + New Task
-                  </Heading>
-                </button>
-              </CreateTask>
-            </TasksList>
-          </Column>
+          <Column column={column} key={column.guid} />
         ))}
         <CreateColumn>
-          <button onClick={() => setShowEditBoardModal(true)}>
+          <button type="button" onClick={() => setShowEditBoardModal(true)}>
             <Heading as="h2" size="large" style={{ color: "var(--gray)" }}>
               + New Column
             </Heading>
