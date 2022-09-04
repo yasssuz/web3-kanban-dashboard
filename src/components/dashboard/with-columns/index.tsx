@@ -9,12 +9,12 @@ import {
   Container,
   Column,
   TasksList,
-  Task,
   CreateTask,
   CreateColumn,
   ColumnTopArea,
   Circle,
 } from "./styles";
+import Task from "./task";
 
 interface WithColumnsProps {
   boardColumnsList: BoardColumn["columns"];
@@ -68,7 +68,7 @@ function WithColumns({
             </ColumnTopArea>
             <TasksList>
               {getTasksByColumn(column.guid)?.map((task) => (
-                <Task key={task.guid}></Task>
+                <Task columnGuid={column.guid} task={task} key={task.guid} />
               ))}
               <CreateTask>
                 <button>

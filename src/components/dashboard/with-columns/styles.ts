@@ -6,11 +6,11 @@ export const Container = styled.ul`
   list-style: none;
   display: flex;
   gap: 24px;
-  overflow-x: auto;
 `;
 
 export const Column = styled.li`
   width: 280px;
+  min-width: 280px;
 `;
 
 export const ColumnTopArea = styled.div`
@@ -25,7 +25,7 @@ export const Circle = styled.span<{ color: string }>`
   min-width: 15px;
   height: 15px;
   min-height: 15px;
-  background: ${props => props.color};
+  background: ${(props) => props.color};
   border-radius: 50%;
 `;
 
@@ -49,10 +49,9 @@ export const TasksList = styled.ul`
   gap: 24px;
 `;
 
-export const Task = styled.li``;
-
 export const CreateTask = styled(CreateColumn)`
   margin-top: 0;
+
   button {
     width: 100%;
     height: min-content;
