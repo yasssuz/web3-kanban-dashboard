@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../contexts/auth-context";
+import { AuthContext } from "../../contexts/oauth";
 
 function Login() {
   const { login } = useContext(AuthContext);
