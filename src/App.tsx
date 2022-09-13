@@ -17,9 +17,13 @@ function App() {
         (currentTheme === "light" && "light") ||
         "light"
     );
-    if (currentTheme === "dark")
-      (document.getElementById("themeSwitcher") as HTMLInputElement).checked =
-        true;
+    if (currentTheme === "dark") {
+      const themeSwitcherElement = document.getElementById(
+        "themeSwitcher"
+      ) as HTMLInputElement;
+
+      if (themeSwitcherElement) themeSwitcherElement.checked = true;
+    }
   }, []);
 
   return (
@@ -27,12 +31,12 @@ function App() {
       <Global styles={globalStyles} />
       <AuthProvider>
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<BaseLayout />}>
+          <Route path='/login' element={<Login />} />
+          <Route path='/dashboard' element={<BaseLayout />}>
             <Route index element={<Dashboard index />} />
-            <Route path="/dashboard/:boardGuid" element={<Dashboard />} />
+            <Route path='/dashboard/:boardGuid' element={<Dashboard />} />
           </Route>
-          <Route path="*" element={<h1>NOT FOUND 404</h1>} />
+          <Route path='*' element={<h1>NOT FOUND 404</h1>} />
         </Routes>
       </AuthProvider>
     </>
