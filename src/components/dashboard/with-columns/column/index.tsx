@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ColumnInterface, ColumnTask } from "../../../../utils/types";
-import Heading from "../../../shared/typography/heading";
+import Modal from "../../../shared/modal";
 import Text from "../../../shared/typography/text";
 import Task from "../task";
 import {
@@ -10,6 +10,8 @@ import {
   CreateTask,
   TasksList,
 } from "./styles";
+import CreateOrEditTask from "../../../modal-states/create-or-edit-task";
+import Heading from "../../../shared/typography/heading";
 
 interface ColumnProps {
   column: ColumnInterface;
@@ -30,31 +32,36 @@ function Column({ column }: ColumnProps) {
   }
 
   return (
-    <Container>
-      <ColumnTopArea>
-        <Circle color={"#49C4E5"} />
-        <Text
-          as="span"
-          size="small"
-          weight="bold"
-          style={{ letterSpacing: "2.4px" }}
-        >
-          {column.title} ({getTasksByColumn(column.guid)?.length || 0})
-        </Text>
-      </ColumnTopArea>
-      <TasksList>
-        {getTasksByColumn(column.guid)?.map((task) => (
-          <Task columnGuid={column.guid} task={task} key={task.guid} />
-        ))}
-        <CreateTask>
-          <button type="button" onClick={() => setShowCreateTaskModal(true)}>
-            <Heading as="h2" size="large" style={{ color: "var(--gray)" }}>
-              + New Task
-            </Heading>
-          </button>
-        </CreateTask>
-      </TasksList>
-    </Container>
+    <>
+      <Container>
+        <ColumnTopArea>
+          <Circle color={"#49C4E5"} />
+          <Text
+            as="span"
+            size="small"
+            weight="bold"
+            style={{ letterSpacing: "2.4px" }}
+          >
+            {column.title} ({getTasksByColumn(column.guid)?.length || 0})
+          </Text>
+        </ColumnTopArea>
+        <TasksList>
+          {getTasksByColumn(column.guid)?.map((task) => (
+            <Task columnGuid={column.guid} task={task} key={task.guid} />
+          ))}
+          <CreateTask>
+            <button type="button" onClick={() => setShowCreateTaskModal(true)}>
+              <Heading as="h2" size="large" style={{ color: "var(--gray)" }}>
+                + New Task
+              </Heading>
+            </button>
+          </CreateTask>
+        </TasksList>
+      </Container>
+      <Modal isOpen={showCreateTaskModal}>
+        <CreateOrEditTask columnGuid={column.guid} />
+      </Modal>
+    </>
   );
 }
 
